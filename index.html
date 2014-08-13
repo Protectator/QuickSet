@@ -43,14 +43,33 @@
 
 </head>
 <body>
-	<div id="container">
-		<div id="page">
-			<h1>QuickSet</h1>
-			<div id="content">
-				Not much here for now.
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h1>QuickSet</h1>
 			</div>
-			<footer><span id="project">QuickSet</span> © 2014 <span id="name">Kewin Dousse</span></footer>
 		</div>
+
+		<div class="row">
+			<div id="shareForm" class="col-xs-6">
+				<form role="form">
+					<div class="form-group">
+						<label for="shareCode">Code</label>
+						<textarea id="shareCode" class="form-control" rows="5"></textarea>
+					</div>
+					<button type="button" id="see" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon glyphicon-eye-open"></span> See</button>
+				</form>
+			</div>
+			<div id="itemsDisplay" class="col-xs-6">
+				
+			</div>
+		</div>
+
+
+		<footer>
+			<span id="project">QuickSet</span> © 2014 <span id="name">Kewin Dousse</span>
+		</footer>
 	</div>
 	<!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
