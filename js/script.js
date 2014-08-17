@@ -81,3 +81,34 @@ $("#see").click(function() {
 	var set = new Set(text);
 	$("#sets").html(HTMLset("Test", set.getBlocks()));
 })
+
+// Drag'n'drop support
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+	function handleFileSelect(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+
+	    var file = evt.dataTransfer.files[0];
+		
+		var fileReader = new FileReader();
+		fileReader.onload = (function(file) {
+			return function(e) { 
+				var content = this.result;
+				$('#shareCode').val(content);
+			}
+		})(file);
+		fileReader.readAsText(file);
+	}
+
+	function handleDragOver(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+	}
+	  
+	// Setup the dnd listeners.
+	var dropZone = document.getElementById('container');
+	dropZone.addEventListener('dragover', handleDragOver, false);
+	dropZone.addEventListener('drop', handleFileSelect, false);
+}
