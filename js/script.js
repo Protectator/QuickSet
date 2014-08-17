@@ -21,9 +21,14 @@
 */
 
 /*
-	Set 
-	Represents a complete set of items.
+	Parameters
  */
+var ddragonLatestVersion = "4.14.2";
+var itemsImages = "http://ddragon.leagueoflegends.com/cdn/"+ddragonLatestVersion+"/img/item/";
+
+
+// Set 
+// Represents a complete set of items.
 function Set (text) {
 	this.data = JSON.parse(text);
 }
@@ -49,16 +54,30 @@ Set.prototype.getText = function () {
 }
 
 function HTMLitem(itemNumber) {
-	var html = "";
-	return html;
+	return '<img src="'+itemsImages+itemNumber+'.png" class="img-rounded"></img>';
 }
 
 function HTMLblock(title, itemsArray) {
-	var html = "";
+	var html = '<div class="panel panel-default">';
+	html += '<div class="panel-heading">'+title+'</div>';
+	html += '<div class="panel-body">';
+	for (var i = 0; i < itemsArray.length; i++) {
+		html += HTMLitem(itemsArray[i]["id"]);
+	}
+	html += "</div></div>";
 	return html;
 }
 
 function HTMLset(title, blocksArray) {
 	var html = "";
+	for (var i = 0; i < blocksArray.length; i++) {
+		html += HTMLblock(blocksArray[i]["type"], blocksArray[i]["items"]);
+	}
 	return html;
 }
+
+$("#see").click(function() {
+	var text = $("#shareCode").val();
+	var set = new Set(text);
+	$("#sets").html(HTMLset("Test", set.getBlocks()));
+})
