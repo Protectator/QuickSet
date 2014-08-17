@@ -19,3 +19,46 @@
     Contact : kewin.d@websud.ch
     Project's repository : https://github.com/Protectator/QuickSet
 */
+
+/*
+	Set 
+	Represents a complete set of items.
+ */
+function Set (text) {
+	this.data = JSON.parse(text);
+}
+
+Set.prototype.getBlocks = function () {
+	return this.data["blocks"];
+}
+
+Set.prototype.getChampions = function () {
+	return this.data["associatedChampions"];
+}
+
+Set.prototype.getMaps = function () {
+	return this.data["associatedMaps"];
+}
+
+Set.prototype.getTitle = function () {
+	return this.data["title"];
+}
+
+Set.prototype.getText = function () {
+	return JSON.stringify(this.data);
+}
+
+function HTMLitem(itemNumber) {
+	var html = "";
+	return html;
+}
+
+function HTMLblock(title, itemsArray) {
+	var html = "";
+	return html;
+}
+
+function HTMLset(title, blocksArray) {
+	var html = "";
+	return html;
+}
